@@ -8,6 +8,7 @@ module "wrapper" {
   create_dnssec_kms_key          = try(each.value.create_dnssec_kms_key, var.defaults.create_dnssec_kms_key, true)
   create_zone                    = try(each.value.create_zone, var.defaults.create_zone, true)
   delegation_set_id              = try(each.value.delegation_set_id, var.defaults.delegation_set_id, null)
+  dnssec_key_signing_key_name    = try(each.value.dnssec_key_signing_key_name, var.defaults.dnssec_key_signing_key_name, null)
   dnssec_kms_key_aliases         = try(each.value.dnssec_kms_key_aliases, var.defaults.dnssec_kms_key_aliases, [])
   dnssec_kms_key_arn             = try(each.value.dnssec_kms_key_arn, var.defaults.dnssec_kms_key_arn, null)
   dnssec_kms_key_description     = try(each.value.dnssec_kms_key_description, var.defaults.dnssec_kms_key_description, "Route53 DNSSEC KMS Key")

@@ -140,6 +140,12 @@ variable "dnssec_kms_key_tags" {
   default     = {}
 }
 
+variable "dnssec_key_signing_key_name" {
+  description = "Name of the Route 53 key signing key (KSK). When null, the hosted zone name is used. Set this to match an existing KSK when importing or adopting DNSSEC without recreating the key"
+  type        = string
+  default     = null
+}
+
 ################################################################################
 # Records
 ################################################################################

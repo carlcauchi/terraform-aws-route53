@@ -286,26 +286,26 @@ See the respective module directories for examples and documentation.
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.28 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.28 |
 
 ## Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | <a name="module_route53_dnssec_kms"></a> [route53\_dnssec\_kms](#module\_route53\_dnssec\_kms) | terraform-aws-modules/kms/aws | 4.0.0 |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_route53_hosted_zone_dnssec.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_hosted_zone_dnssec) | resource |
 | [aws_route53_key_signing_key.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_key_signing_key) | resource |
 | [aws_route53_record.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
@@ -317,12 +317,13 @@ See the respective module directories for examples and documentation.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_comment"></a> [comment](#input\_comment) | A comment for the hosted zone. Defaults to `Managed by Terraform` | `string` | `null` | no |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create Route53 zone | `bool` | `true` | no |
 | <a name="input_create_dnssec_kms_key"></a> [create\_dnssec\_kms\_key](#input\_create\_dnssec\_kms\_key) | Whether to create a KMS key for DNSSEC signing | `bool` | `true` | no |
 | <a name="input_create_zone"></a> [create\_zone](#input\_create\_zone) | Determines whether to create the Route53 zone or lookup an existing zone | `bool` | `true` | no |
 | <a name="input_delegation_set_id"></a> [delegation\_set\_id](#input\_delegation\_set\_id) | The ID of the reusable delegation set whose NS records you want to assign to the hosted zone. Conflicts with vpc as delegation sets can only be used for public zones | `string` | `null` | no |
+| <a name="input_dnssec_key_signing_key_name"></a> [dnssec\_key\_signing\_key\_name](#input\_dnssec\_key\_signing\_key\_name) | Name of the Route 53 key signing key (KSK). When null, the hosted zone name is used. Set this to match an existing KSK when importing or adopting DNSSEC without recreating the key | `string` | `null` | no |
 | <a name="input_dnssec_kms_key_aliases"></a> [dnssec\_kms\_key\_aliases](#input\_dnssec\_kms\_key\_aliases) | A list of aliases to create. Note - due to the use of `toset()`, values must be static strings and not computed values | `list(string)` | `[]` | no |
 | <a name="input_dnssec_kms_key_arn"></a> [dnssec\_kms\_key\_arn](#input\_dnssec\_kms\_key\_arn) | The ARN of the KMS key to use for DNSSEC signing. Required when `create_dnssec_kms_key` is `false` | `string` | `null` | no |
 | <a name="input_dnssec_kms_key_description"></a> [dnssec\_kms\_key\_description](#input\_dnssec\_kms\_key\_description) | The description of the key as viewed in AWS console | `string` | `"Route53 DNSSEC KMS Key"` | no |
@@ -343,7 +344,7 @@ See the respective module directories for examples and documentation.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_arn"></a> [arn](#output\_arn) | Zone ARN of Route53 zone |
 | <a name="output_dnssec_kms_key_arn"></a> [dnssec\_kms\_key\_arn](#output\_dnssec\_kms\_key\_arn) | The Amazon Resource Name (ARN) of the key |
 | <a name="output_dnssec_kms_key_id"></a> [dnssec\_kms\_key\_id](#output\_dnssec\_kms\_key\_id) | The globally unique identifier for the key |
