@@ -100,7 +100,7 @@ resource "aws_route53_vpc_association_authorization" "this" {
 resource "aws_route53_key_signing_key" "this" {
   count = var.create && var.enable_dnssec ? 1 : 0
 
-  name                       = coalesce(var.dnssec_key_signing_key_name, local.zone_name)
+  name                       = try(coalesce(var.dnssec_key_signing_key_name, local.zone_name), "")
   hosted_zone_id             = local.zone_id
   key_management_service_arn = var.create_dnssec_kms_key ? module.route53_dnssec_kms.key_arn : var.dnssec_kms_key_arn
 }
